@@ -1,0 +1,21 @@
+-Rsn #Completly remove package
+-Syu #Install and update packages
+
+#Fix Dolphin application select
+sudo pacman -Syu archlinux-xdg-menu
+XDG_MENU_PREFIX=arch- kbuildsycoca6 --noincremental
+
+#Paru
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si PKGBUILD
+paru
+
+#Back in time
+git clone https://aur.archlinux.org/backintime.git
+cd backintime
+makepkg -si PKGBUILD
+backintime-qt
+
+#Kitty font selection
+kitten choose-fonts
