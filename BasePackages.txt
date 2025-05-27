@@ -5,7 +5,7 @@ linux
 
 linux-firmware
 
-neofetch
+fastfetch
 
 pipewire
 
