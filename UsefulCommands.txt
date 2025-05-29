@@ -39,3 +39,6 @@
 
 #Open images files
     sxiv Path/To/Image/Or/Folder
+
+#JP2A
+    jp2a --colors --width=N Path/To/Image > Path/To/Export.txt

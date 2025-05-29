@@ -30,6 +30,7 @@
     vlc
     power-profiles-daemon
     waybar
+    jp2a
 
 -Most Used-
     discord
