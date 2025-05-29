@@ -1,63 +1,32 @@
 -Base-
-base
-
-linux
-
-linux-firmware
-
-fastfetch
-
-pipewire
-
-#bluetoothctl
-bluez
-
-#sudo systemctl enable bluetooth.service
-#sudo systemctl start bluetooth.service
-bluez-utils
-
-
+    base
+    linux
+    linux-firmware
+    fastfetch
+    pipewire
+    pipewire-alsa
+    bluez #bluetoothctl
+    bluez-utils #sudo systemctl enable/start bluetooth.service
 
 -Essentials-
-#hyprland
-hyprland
-
-kitty
-
-gtk3
-
-#hyprpaper
-hyprpaper
-
-#code
-code
-
-#git clone [URL]
-git
-
-#backintime-qt (AUR)
-backintime
-
-#sudo timeshift
-timeshift
-
-noto-fonts
-
-noto-fonts-cjk
-
-firefox
-
-vlc
+    hyprland
+    kitty
+    gtk3
+    hyprpaper
+    code
+    git #git clone [URL]
+    backintime (AUR) #backintime-qt
+    timeshift #sudo timeshift
+    noto-fonts
+    noto-fonts-cjk
+    firefox
+    sxiv #sxiv Path/To/File/Or/Folder
+    vlc
 
 -Most Used-
-discord
-
-spotify-launcher
-
-
+    discord
+    spotify-launcher
 
 -Optionals-
-#paru [package name (AUR/Official)] (AUR)
-paru
-
-dolphin
+    paru #paru [package name (AUR/Official)] (AUR)
+    dolphin
