@@ -10,6 +10,7 @@
     bluez #bluetoothctl
     bluez-utils #sudo systemctl enable/start bluetooth.service
     sudo
+    playerctl
 
 -Essentials-
     hyprland
