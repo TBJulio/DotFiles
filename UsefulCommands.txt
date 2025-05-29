@@ -1,21 +1,41 @@
--Rsn #Completly remove package
+-Rsn #Completly remove package and related
 -Syu #Install and update packages
 
+#Copy
+    cp #cp Path/To/Copy Path/To/Paste
+    cp -r #Copy directories
+    cp Path1 Path2 ... Path/To/Paste #For multiple files
+
+#Move or Rename
+    mv #mv Path/To/File/Or/Directory/To/Move/Or/Rename Path/To/Paste/Or/New/Name 
+    mv Path1 Path2 ... Path/To/Paste #For multiple files
+
+#Remove/Delete files
+    rm #rm Path/To/File
+    rm Path1 Path2 ... #For multiple files
+
 #Fix Dolphin application select
-sudo pacman -Syu archlinux-xdg-menu
-XDG_MENU_PREFIX=arch- kbuildsycoca6 --noincremental
+    sudo pacman -Syu archlinux-xdg-menu
+    XDG_MENU_PREFIX=arch- kbuildsycoca6 --noincremental
 
 #Paru
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si PKGBUILD
-paru
+    git clone https://aur.archlinux.org/paru.git
+    cd paru
+    makepkg -si PKGBUILD
+    paru
 
 #Back in time
-git clone https://aur.archlinux.org/backintime.git
-cd backintime
-makepkg -si PKGBUILD
-backintime-qt
+    git clone https://aur.archlinux.org/backintime.git
+    cd backintime
+    makepkg -si PKGBUILD
+    backintime-qt
 
 #Kitty font selection
-kitten choose-fonts
+    kitten choose-fonts
+
+#Show hidden files
+    ls -a #In the terminal
+    CTRL, H #In Dolphin
+
+#Open images files
+    sxiv Path/To/Image/Or/Folder
