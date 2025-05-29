@@ -1,5 +1,7 @@
 -Base-
+    amd-ucode
     base
+    base-devel
     linux
     linux-firmware
     fastfetch
@@ -7,6 +9,7 @@
     pipewire-alsa
     bluez #bluetoothctl
     bluez-utils #sudo systemctl enable/start bluetooth.service
+    sudo
 
 -Essentials-
     hyprland
@@ -19,9 +22,13 @@
     timeshift #sudo timeshift
     noto-fonts
     noto-fonts-cjk
+    ttf-space-mono-nerd
+    ttf-font-awesome
     firefox
     sxiv #sxiv Path/To/File/Or/Folder
     vlc
+    power-profiles-daemon
+    waybar
 
 -Most Used-
     discord
