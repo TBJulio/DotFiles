@@ -11,6 +11,7 @@
     bluez-utils #sudo systemctl enable/start bluetooth.service
     sudo
     playerctl
+    auto-cpufreq (AUR)
 
 -Essentials-
     hyprland
@@ -28,7 +29,6 @@
     firefox
     sxiv #sxiv Path/To/File/Or/Folder
     vlc
-    power-profiles-daemon
     waybar
     jp2a
 

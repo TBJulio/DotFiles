@@ -42,3 +42,9 @@
 
 #JP2A
     jp2a --colors --width=N Path/To/Image > Path/To/Export.txt
+
+#auto-cpufreq
+    git clone https://aur.archlinux.org/auto-cpufreq.git
+    cd auto-cpufreq
+    makepkg -si PKGBUILD
+    sudo auto-cpufreq --install
