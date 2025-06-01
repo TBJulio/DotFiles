@@ -1,61 +1,63 @@
 {
     //Left
-    "custom/arch": {
-        "format": "󰣇",
-        "tooltip": true,
-        "tooltip-format": "btw"
+    "custom/arch":{
+        "format":"󰣇",
+        "tooltip":true,
+        "tooltip-format":"btw"
     },
-    "hyprland/window": {
-        "format": "{initialTitle}",
-        "tooltip": true,
-        "tooltip-format": "{title}"
+    "hyprland/window":{
+        "format":"{initialTitle}",
+        "tooltip":true,
+        "tooltip-format":"{title}"
     },
 
     //Center
-    "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "warp-on-scroll": false,
-        "format": "{icon}",
-        "format-icons": {
-            "active": "",
-		    "default": ""
-        }
+    "hyprland/workspaces":{
+        "disable-scroll":true,
+        "all-outputs":true,
+        "warp-on-scroll":false,
+        "format":"{icon}",
+        "format-icons":{
+            "active":"",
+		    "default":""
+        },
+        "tooltip":true,
+        "tooltip-format":"{title}"
     },
 
     //Right
-    "mpris": {
-	    "format": "{player_icon}",
-	    "format-paused": "{status_icon}",
-	    "player-icons": {
-		"default": "⏸"
+    "mpris":{
+	    "format":"{player_icon}",
+	    "format-paused":"{status_icon}",
+	    "player-icons":{
+		"default":"⏸"
 	    },
-	    "status-icons": {
-		"paused": "▶"
+	    "status-icons":{
+		"paused":"▶"
 	}
 	// "ignored-players": ["firefox"]
     },
-    //"cpu": {
-    //    "format": "{usage}% ",
-    //    "tooltip": true
+    //"cpu":{
+    //    "format":"{usage}% ",
+    //    "tooltip":true
     //},
-    //"memory": {
-    //   "format": "{}% "
+    //"memory":{
+    //   "format":"{}% "
     //},
-    "clock": {
-        "tooltip-format": "<big>{:%d %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+    "clock":{
+        "tooltip-format":"<big>{:%d %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt":"{:%Y-%m-%d}"
     },
-    "custom/power": {
-        "format" : "⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
+    "custom/power":{
+        "format" :"⏻ ",
+		"tooltip":false,
+		"menu":"on-click",
+		"menu-file":"$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+		"menu-actions":{
+			"shutdown":"shutdown",
+			"reboot":"reboot",
+			"suspend":"systemctl suspend",
+			"hibernate":"systemctl hibernate"
 		}
     }
 }

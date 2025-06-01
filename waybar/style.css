@@ -1,93 +1,93 @@
 * {
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 15;
+    font-family:FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size:15;
 }
 
 /* Waybar */
-window#waybar {
-    background: rgba(255, 255, 255, .1);
-    color: rgba(255, 255, 255, 1);
+window#waybar{
+    background:rgba(255,255,255,.1);
+    color:rgba(255,255,255,1);
 }
 
 /* Modules */
-.modules-left {
-    margin: 0;
-    background: rgba(0, 0, 0, 1);
-    border-top-right-radius: 15;
-    border-bottom-right-radius: 15;
-    padding: 0 15;
-    padding-left: 0;
+.modules-left{
+    margin:0;
+    background:rgba(0,0,0,1);
+    border-top-right-radius:15;
+    border-bottom-right-radius:15;
+    padding:0 15;
+    padding-left:0;
 }
-.modules-center {
-    margin: 0;
-    background: transparent;
-    padding: 0;
+.modules-center{
+    margin:0;
+    background:transparent;
+    padding:0;
 }
-.modules-right {
-    margin: 0;
-    background: rgba(0, 0, 0, 1);
-    border-top-left-radius: 15;
-    border-bottom-left-radius: 15;
-    padding: 0 15;
+.modules-right{
+    margin:0;
+    background:rgba(0,0,0,1);
+    border-top-left-radius:15;
+    border-bottom-left-radius:15;
+    padding:0 15;
     padding-right: 0;
 }
 
 /* Left */
-#custom-arch {
-    font-size: 20;
-    margin: 0 20;
+#custom-arch{
+    font-size:20;
+    margin:0 20;
 }
-#custom-arch:hover {
-    color: rgba(23, 147, 209,1);
-    transition: color .5s;
+#custom-arch:hover{
+    color:rgba(23,147,209,1);
+    transition:color.5s;
 }
 
 /* Center */
-#workspaces button {
-    margin: 0;
-    border-radius: 15;
-    background: transparent;
-    color: rgba(255, 255, 255,1);
-    box-shadow: none;
-    text-shadow: none;
-    border: 0;
+#workspaces button{
+    margin:0;
+    border-radius:15;
+    background:transparent;
+    color:rgba(255,255,255,1);
+    box-shadow:none;
+    text-shadow:none;
+    border:0;
 }
-#workspaces button.active {
-    margin: 0;
-    border-radius: 15;
-    background: rgba(0, 0, 0, 1);
-    color: rgba(255, 255, 255,1);
-    box-shadow: none;
-    text-shadow: none;
-    border: 0;
+#workspaces button.active{
+    margin:0;
+    border-radius:15;
+    background:rgba(0,0,0,1);
+    color: rgba(255,255,255,1);
+    box-shadow:none;
+    text-shadow:none;
+    border:0;
 }
 #workspaces button:hover {
-    margin: 0;
-    border-radius: 15;
-    background: rgba(0, 0, 0, 1);
-    color: rgba(23, 147, 209,1);
-    box-shadow: none;
-    text-shadow: none;
-    border: 0;
-    transition: color .5s;
+    margin:0;
+    border-radius:15;
+    background: rgba(0,0,0,1);
+    color:rgba(23,147,209,1);
+    box-shadow:none;
+    text-shadow:none;
+    border:0;
+    transition:color.5s;
 }
 
 /* Right */
-#mpris {
-    margin: 0 5;
+#mpris{
+    margin:0 5;
 }
-#mpris:hover {
-    color: rgba(23, 147, 209,1);
-    transition: color .5s;
+#mpris:hover{
+    color:rgba(23,147,209,1);
+    transition: color.5s;
 }
 #cpu
 #memory
 #clock
-#custom-power {
-    margin: 10;
-    font-size: 25;
+#custom-power{
+    margin:10;
+    font-size:25;
 }
-#custom-power:hover {
-    color: rgba(23, 147, 209,1);
-    transition: color .5s;
+#custom-power:hover{
+    color: rgba(23,147,209,1);
+    transition:color.5s;
 }
