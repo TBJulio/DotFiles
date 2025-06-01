@@ -17,11 +17,8 @@
 
     "modules-right": [
         "mpris",
-        "power-profiles-daemon",
         //"cpu",
         //"memory",
-        "battery",
-        "battery#bat2",
         "clock",
         "custom/power"
     ],

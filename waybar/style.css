@@ -80,27 +80,8 @@ window#waybar {
     color: rgba(23, 147, 209,1);
     transition: color .5s;
 }
-#power-profiles-daemon {
-    margin: 0 10;
-}
-#power-profiles-daemon:hover {
-    color: rgba(23, 147, 209,1);
-    transition: color .5s;
-}
-#power-profiles-daemon.performance
-#power-profiles-daemon.balanced
-#power-profiles-daemon.power-saver
 #cpu
 #memory
-#battery
-#battery.charging, #battery.plugged
-#battery.critical:not(.charging) {
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
 #clock
 #custom-power {
     margin: 10;

@@ -35,18 +35,6 @@
 	}
 	// "ignored-players": ["firefox"]
     },
-
-    "power-profiles-daemon": {
-        "format": "{icon}",
-        "tooltip": true,
-        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-        "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
-    },
     //"cpu": {
     //    "format": "{usage}% ",
     //    "tooltip": true
@@ -54,24 +42,6 @@
     //"memory": {
     //   "format": "{}% "
     //},
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
     "clock": {
         "tooltip-format": "<big>{:%d %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
