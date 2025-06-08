@@ -1,4 +1,9 @@
 {
+    "custom/endpoint":{
+        "format": "•",
+        "tooltip": false
+    },
+
     //Left
     "custom/arch":{
         "format":"󰣇",
@@ -7,57 +12,94 @@
     },
     "hyprland/window":{
         "format":"{initialTitle}",
-        "tooltip":true,
-        "tooltip-format":"{title}"
-    },
-
-    //Center
-    "hyprland/workspaces":{
-        "disable-scroll":true,
-        "all-outputs":true,
-        "warp-on-scroll":false,
-        "format":"{icon}",
-        "format-icons":{
-            "active":"",
-		    "default":""
+        "rewrite":{
+            "(.*)Mozilla Firefox":"Firefox",
+            "(.*)VLC media player":"VLC",
+            "(.*)Code - OSS":"Code"
         },
         "tooltip":true,
         "tooltip-format":"{title}"
     },
+    "custom/power":{
+        "format":"",
+        "tooltip":false
+    },
+    "custom/reboot":{
+        "format":"",
+        "on-click":"~/.config/waybar/scripts/power/reboot.sh",
+        "tooltip":false
+    },
+    "custom/shutdown":{
+        "format":"",
+        "on-click":"~/.config/waybar/scripts/power/shutdown.sh",
+        "tooltip":false
+    },
+    "group/power": {
+        "orientation":"horizontal",
+        "drawer":{
+            "transition-duration": 500,
+            "transition-left-to-right":false,
+            "click-to-reveal": true
+        },
+        "modules":["custom/power","custom/endpoint","custom/reboot","custom/shutdown"]
+    },
+
+    //Center
+    "hyprland/workspaces":{
+        "format":"{icon}",
+        "format-icons":{
+            "active":"",
+		    "default":""
+        }
+    },
 
     //Right
+    "custom/hardware": {
+        "format":"", //Left  , Right  
+    //    "format-alt":"",
+        "tooltip": false
+    },
+    "cpu":{
+        "format":"CPU:{usage}%"
+    },
+    "memory":{
+        "format":"RAM:{}%"
+    },
+    "group/hardware": {
+        "orientation": "horizontal",
+        "drawer":{
+            "transition-duration": 500,
+            "transition-left-to-right": true,
+            "click-to-reveal": true
+        },
+        "modules":["custom/hardware","cpu","memory","custom/endpoint"]
+    },
     "mpris":{
-	    "format":"{player_icon}",
-	    "format-paused":"{status_icon}",
+	    "format":"♪ {title} {player_icon}", //Spotify icon 
+	    "format-paused":"♪ {title} {status_icon}",
 	    "player-icons":{
 		"default":"⏸"
 	    },
 	    "status-icons":{
 		"paused":"▶"
-	}
+	    },
+        "ignored-players":["firefox"]
+    },
+    "bluetooth": {
+        "format":"",
+        "format-connected":" {device_alias}",
+        "format-connected-battery":" {device_alias}{device_battery_percentage}% ",
+        "tooltip-format-connected":"{num_connections} connected\n{device_enumerate}",
+        "tooltip-format-enumerate-connected":"{device_alias}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_battery_percentage}%",
+        "on-click":"~/.config/waybar/scripts/connect-bluetooth.sh",
+        "on-click-right":"~/.config/waybar/scripts/disconnect-bluetooth.sh"
+    },
 	// "ignored-players": ["firefox"]
-    },
-    //"cpu":{
-    //    "format":"{usage}% ",
-    //    "tooltip":true
     //},
-    //"memory":{
-    //   "format":"{}% "
-    //},
+
     "clock":{
-        "tooltip-format":"<big>{:%d %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt":"{:%Y-%m-%d}"
-    },
-    "custom/power":{
-        "format" :"⏻ ",
-		"tooltip":false,
-		"menu":"on-click",
-		"menu-file":"$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions":{
-			"shutdown":"shutdown",
-			"reboot":"reboot",
-			"suspend":"systemctl suspend",
-			"hibernate":"systemctl hibernate"
-		}
+        "format":"{:%d-%m-%Y %I:%M}",
+        "tooltip-format":"<big>{:%d %B}</big>\n<tt><small>{calendar}</small></tt>"
     }
 }

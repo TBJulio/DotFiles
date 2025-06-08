@@ -2,25 +2,31 @@
 {
     "layer":"top",
     "position":"bottom",
-    "height":30, //30
+    "height":0, //30
     // "width":1280,
-    "spacing":10,
+    "spacing":5,
 
+
+    // Left
     "modules-left":[
         "custom/arch",
-        "hyprland/window"
+        "hyprland/window",
+        "group/power"
     ],
 
+    // Center
     "modules-center":[
         "hyprland/workspaces"
     ],
 
+    // Right
     "modules-right":[
+        "group/hardware",
         "mpris",
-        //"cpu",
-        //"memory",
-        "clock",
-        "custom/power"
+        "custom/endpoint",
+        "bluetooth",
+        "custom/endpoint",
+        "clock"
     ],
 
     // Modules configuration
