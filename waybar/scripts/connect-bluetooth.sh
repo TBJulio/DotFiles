@@ -1,0 +1,1 @@
+bluetoothctl connect FC:E9:D8:01:D7:E1
