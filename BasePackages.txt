@@ -24,6 +24,7 @@
     timeshift #sudo timeshift
     noto-fonts
     noto-fonts-cjk
+    ttf-inconsolata
     ttf-space-mono-nerd
     ttf-font-awesome
     firefox

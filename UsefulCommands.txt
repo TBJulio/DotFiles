@@ -48,3 +48,11 @@
     cd auto-cpufreq
     makepkg -si PKGBUILD
     sudo auto-cpufreq --install
+
+#Reload script
+    if pgrep ProcessName;then
+        killall ProcessName
+        ProcessName
+    else
+        ProcessName
+    fi
