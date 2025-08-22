@@ -5,13 +5,13 @@ ckdisk /dev/sdx
 mkfs.vfat -F 32 /dev/sdx1
 mkswap /dev/sdx2
 mkfs.ext4 /dev/sdx3
-mount /dev/sdx3
+mount /dev/sdx3 /mnt
 mkdir -p /mnt/boot/efi
 mount /dev/sdx1 /mnt/boot/efi
 swapon /dev/sdx2
 
 pacstrap /mnt base linux linux-firmware intel-ucode nvidia nvidia-utils nvidia-settings sudo nano
-genfstab -U /mnt >> /etc/fstab
+genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 pacman -S networkmanager grub efibootmgr
 systemctl enable NetworkManager
