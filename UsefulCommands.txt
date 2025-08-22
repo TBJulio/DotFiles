@@ -58,3 +58,8 @@
     fi
 
 %wheel ALL=(ALL:ALL) NOPASSWD: /sbin/shutdown,/usr/bin/pacman -Syu --noconfirm
+
+/* class           instance         title       tags mask     isfloating   monitor */
+{"Alacritty",      NULL,            NULL,       1<<0,         0,           -1},
+
+static const char *termcmd[]  = { "alacritty", NULL };
