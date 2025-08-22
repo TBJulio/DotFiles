@@ -1,0 +1,39 @@
+ckdisk /dev/sdx
+    512M (EFI)
+    8G (Swap)
+    Rest (Linux storage)
+mkfs.vfat -F 32 /dev/sdx1
+mkswap /dev/sdx2
+mkfs.ext4 /dev/sdx3
+mount /dev/sdx3
+mkdir -p /mnt/boot/efi
+mount /dev/sdx1 /mnt/boot/efi
+swapon /dev/sdx2
+
+pacstrap /mnt base linux linux-firmware intel-ucode nvidia nvidia-utils nvidia-settings sudo nano
+genfstab -U /mnt >> /etc/fstab
+arch-chroot /mnt
+pacman -S networkmanager grub efibootmgr
+systemctl enable NetworkManager
+
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch
+grub-mkconfig -o /boot/grub/grub.cfg
+passwd
+exit
+umount -a
+reboot
+
+hostnamectl hostname rig
+nano /etc/locale.gen
+uncomment es_MX.UTF-8 UTF-8
+locale-gen
+useradd -m -G wheel julio
+passwd julio
+
+sudo nano /etc/pacman.conf
+uncomment [multilib]
+uncomment Include = /etc/pacman.d/mirrorlist
+sudo pacman -Syu
+
+sudo pacman -S fastfetch
+fastfetch

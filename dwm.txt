@@ -1,0 +1,16 @@
+sudo pacman -S base-devel git xorg-server xorg-xinit xorg-xrandr libxinerama libxft libx11 alacritty
+git clone git://git.suckless.org/dwm
+
+nano .xinitrc
+append exec dwm
+nano .bash_profile
+append at the of the file startx
+
+cd dwm
+sudo make clean install
+sudo nano config.h
+search for {"st",NULL};
+change it to {"alacritty",NUL};
+sudo make clean install
+exit
+login
