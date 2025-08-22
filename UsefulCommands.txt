@@ -56,3 +56,5 @@
     else
         ProcessName
     fi
+
+%wheel ALL=(ALL:ALL) NOPASSWD: /sbin/shutdown /usr/bin/pacman -Syu --noconfirm
