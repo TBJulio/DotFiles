@@ -1,4 +1,4 @@
-sudo pacman -S base-devel git xorg-server xorg-xinit xorg-xrandr libxinerama libxft libx11 alacritty
+sudo pacman -S base-devel git xorg-server xorg-xinit xorg-xrandr libxinerama libxft alacritty
 git clone git://git.suckless.org/dwm
 
 nano .xinitrc
