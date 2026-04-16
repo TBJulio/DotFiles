@@ -21,8 +21,13 @@ static const char col_gray[]        = "#808080";
 static const char col_blue[]        = "#000080";
 static const char *colors[][3]      = {
         /*               fg         bg         border   */
-        [SchemeNorm] = { col_black, col_silver, col_white },
-        [SchemeSel]  = { col_white, col_blue,  col_white },
+        //[SchemeNorm]  = { col_black, col_silver, col_white },
+        //[SchemeSel]   = { col_white, col_blue,  col_white },
+        [SchemeTagsSel]   = { col_white, col_blue,    "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+        [SchemeTagsNorm]  = { col_black, col_gray,    "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+        [SchemeInfoSel]   = { col_black, col_silver,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
+        [SchemeInfoNorm]  = { col_gray3, col_gray1,   "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
+	[SchemeStatus]    = { col_black, col_silver,   "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
 };
 
 /* tagging */
