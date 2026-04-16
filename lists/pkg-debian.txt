@@ -2,6 +2,7 @@ alacritty
 bluez
 bluez-tools
 build-essential
+chafa
 curl
 ddclient
 dunst

@@ -3,6 +3,7 @@ base-devel
 bind
 bluez
 bluez-utils
+chafa
 code
 ddclient
 discord
