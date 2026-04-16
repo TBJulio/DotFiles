@@ -10,14 +10,19 @@ static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = {"W95FA:size=15"};
 static const char dmenufont[]       = "Inconsolata:size=15";
 static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
+static const char col_gray2[]       = "#444444"; // dark gray
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
+static const char col_silver[]      = "#C0C0C0";
+static const char col_black[]       = "#000000";
+static const char col_white[]       = "#FFFFFF";
+static const char col_gray[]        = "#808080";
+static const char col_blue[]        = "#000080";
 static const char *colors[][3]      = {
         /*               fg         bg         border   */
-        [SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-        [SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+        [SchemeNorm] = { col_black, col_silver, col_white },
+        [SchemeSel]  = { col_white, col_blue,  col_white },
 };
 
 /* tagging */
