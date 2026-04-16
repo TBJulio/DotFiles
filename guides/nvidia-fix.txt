@@ -1,0 +1,12 @@
+sudo pacman -S linux-headers
+
+Search latest lib32-nvidia-580xx-utils version in the AUR
+git clone (AUR link)
+cd lib32-nvidia-580xx-utils
+makepkg -si PKBUILD
+
+Search latest nvidia-580xx-dkms version in the AUR
+git clone  (AUR link)
+cd nvidia-580xx-utils
+makepkg -si PKBUILD
+reboot

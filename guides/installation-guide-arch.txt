@@ -1,0 +1,91 @@
+Disk partition
+	cfdisk /dev/sdx
+		512M - EFI
+		8G - Swap
+		Rest - Linux storage
+
+Format partitions
+	mkfs.vfat -F 32 /dev/sdx1
+	mkswap /dev/sdx2
+	mkfs.btrfs /dev/sdx3
+
+Create subvolumes
+	mount /dev/sdx3 /mnt
+	btrfs subvolume create /mnt/@
+	btrfs subvolume create /mnt/@home
+	btrfs subvolume create /mnt/@log
+	btrfs subvolume create /mnt/@pkg
+	btrfs subvolume create /mnt/@srv
+	btrfs subvolume create /mnt/@docker
+	btrfs subvolume create /mnt/@snapshots
+	umount /mnt
+
+Mount volumes
+	mount -o commit=300,space_cache=v2,noatime,compress=zstd:5,subvol=@ /dev/sdx3 /mnt
+	mkdir -p /mnt/{boot/efi,home,var/log,var/cache/pacman/pkg,srv,var/lib/docker,snapshots}
+	mount -o commit=300,space_cache=v2,noatime,compress=zstd:5,subvol=@home /dev/sdx3 /mnt/home
+	mount -o commit=300,space_cache=v2,noatime,compress=zstd:5,subvol=@snapshots /dev/sdx3 /mnt/snapshots
+	mount -o nodatacow,compress=no,subvol=@log /dev/sdx3 /mnt/var/log
+	mount -o nodatacow,compress=no,subvol=@docker /dev/sdx3 /mnt/var/lib/docker
+	mount -o nodatacow,compress=no,subvol=@pkg /dev/sdx3 /mnt/var/cache/pacman/pkg
+	mount -o commit=300,space_cache=v2,noatime,compress=no,subvol=@srv /dev/sdx3 /mnt/srv
+	mount /dev/sdx1 /mnt/boot/efi
+	swapon /dev/sdx2
+
+Base system
+	pacstrap /mnt base linux linux-firmware intel-ucode nvidia nvidia-utils nvidia-settings btrfs-progs sudo nano fastfetch networkmanager grub efibootmgr
+	genfstab -U /mnt >> /mnt/etc/fstab
+
+	arch-chroot /mnt
+		systemctl enable NetworkManager
+		grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch
+		grub-mkconfig -o /boot/grub/grub.cfg
+		passwd
+	exit
+
+Reboot
+	umount -R /mnt
+	reboot
+
+=====Post Installation=====
+
+Set TimeZone
+	nano /etc/locale.gen
+	=uncomment region=
+	locale-gen
+	timedatectl set-timezone America/Mexico_City
+
+Create user and sudo it
+	useradd -m -G wheel user
+	passwd user
+	EDITOR=nano visudo
+	=uncomment "wheel"=
+	=add commands "shutdown" and "-Syu"=
+
+Change hostname
+	hostnamectl hostname host
+	exit
+	=log back in as new user to confirm hostname and sudo=
+
+Enable multilib
+	sudo nano /etc/pacman.conf
+	=uncomment "multilib"=
+	sudo pacman -Syu
+	
+=====Create snapshot=====
+
+	sudo mkdir /snapshots/minimal-installation
+	sudo btrfs subvolume snapshot -r / /snapshots/minimal-installation/root
+	sudo btrfs subvolume snapshot -r /home /snapshots/minimal-installation/home
+	sudo btrfs subvolume snapshot -r /var/log /snapshots/minimal-installation/log
+	sudo btrfs subvolume snapshot -r /var/cache/pacman/pkg /snapshots/minimal-installation/pkg
+	sudo btrfs subvolume snapshot -r /srv /snapshots/minimal-installation/srv
+	sudo btrfs subvolume snapshot -r /var/lib/docker /snapshots/minimal-installation/docker
+
+-install listed packages-
+
+Install dwm
+	cd ~/.config/
+	git clone https://git.suckless.org/dwm
+	cd dwm
+	sudo make clean install

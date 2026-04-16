@@ -1,0 +1,10 @@
+git clone https://github.com/urbanadventurer/WhatWeb.git
+cd WhatWeb/
+
+gem install bundler
+gem install getoptlong
+gem install resolv-replace
+
+bundle install
+
+./whatweb (domain)

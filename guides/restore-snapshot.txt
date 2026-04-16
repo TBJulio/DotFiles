@@ -1,0 +1,17 @@
+Unmount mounting point
+	sudo umount /var/lib/docker
+	sudo fuser -km /var/lib/docker (if running processes)
+
+Mount root volume
+	sudo mount -o subvolid=5 /dev/sdxn /mnt
+
+Remove current subvolume
+	cd /mnt
+	sudo btrfs subvolume list /mnt
+	sudo btrfs subvolume delete /mnt/@/var/lib/portables
+	sudo btrfs subvolume delete /mnt/@/var/lib/machines
+	sudo btrfs subvolume delete @
+
+Restore snapshot
+	sudo btrfs subvolume snapshot /mnt/@snapshots/fresh-install/root /mnt/@
+	reboot

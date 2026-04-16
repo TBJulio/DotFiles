@@ -1,0 +1,14 @@
+sudo pacman -S pulseaudio pulseaudio-bluetooth
+
+pulseaudio -k
+pulseaudio --start
+
+sudo systemctl restart bluetooth
+
+bluetoothctl remove $MACA
+bluetoothctl scan on
+bluetoothctl pair $MACA
+bluetoothctl trust $MACA
+bluetoothctl connect $MACA
+
+pactl list modules | grep bluetooth

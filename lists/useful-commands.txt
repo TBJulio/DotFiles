@@ -1,0 +1,29 @@
+#know when was a package installed
+pacman -Qi <package_name> | grep "Install Date"
+
+#confirm if my host is showing headers in ports
+curl -v http://localhost 2>&1 | grep -i "< Server"
+
+#know open ports
+sudo ss -tulpn
+
+#nmap
+sudo nmap -p- --open -sS -vvv -Pn -n (domain)
+sudo nmap -sC -sV -p(ports discovered) (domain)
+
+#whatweb
+whatweb (domain)
+
+#create a file with the differences between 2 files
+diff file1 file2 > newfile
+
+#fail2ban
+sudo fail2ban-client status (rule)
+sudo nano /var/log/fail2ban.log
+
+sudo journalctl -u (service).service -f
+sudo fail2ban-regex systemd-journal (service).service
+
+sudo fail2ban-regex path/to/log /etc/fail2ban/filter.d/(rule).conf
+
+sudo fail2ban-client set (rule) ban/unban (<ADDR>)

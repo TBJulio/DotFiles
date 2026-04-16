@@ -1,0 +1,29 @@
+Router Telmex
+http://192.168.1.254/login.html
+
+Router Huawei
+http://192.168.101.1/
+
+Arch Wiki
+https://wiki.archlinux.org/title/Main_page
+
+Port Check
+https://canyouseeme.org/
+
+Cloudflare
+https://dash.cloudflare.com/login
+
+What's my IP?
+https://whatismyipaddress.com/
+
+UnionFansub
+https://torrent.unionfansub.com/userdetails.php?id=187612
+
+Metal Tracker
+https://en.metal-tracker.com/profile/927541805.html
+
+P2Pool
+https://p2pool.io/#help
+
+Mini P2Pool Observer
+https://mini.p2pool.observer/

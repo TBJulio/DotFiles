@@ -1,0 +1,25 @@
+tar -xzvf your-cursor-theme.tar.gz
+
+mkdir -p ~/.icons/theme-name
+
+mv your-extracted-folder ~/.icons/theme-name/
+
+nano ~/.Xresources
+Xcursor.theme: theme-name (theme's name located in ~/.icons/theme-name/index.theme in the section [Name])
+Xcursor.size: 24
+
+nano ~/.config/gtk-3.0/settings.ini
+[Settings]
+gtk-cursor-theme-name = theme-name
+gtk-cursor-theme-size = 24
+
+nano ~/.xinitrc
+xsetroot -theme-name left_ptr & (theme's name located in ~/.icons/theme-name/index.theme in the section [Name])
+
+mkdir -p ~/.local/share/icons/default
+
+nano ~/.local/share/icons/default/index.theme
+[Icon Theme]
+Inherits=theme-name
+
+xrdb -merge ~/.Xresources

@@ -1,0 +1,72 @@
+#Preparation
+sudo passwd root
+sudo -i
+
+apt install debootstrap arch-install-scripts dosfstools btrfs-progs nano
+
+#Disk Partitions
+cfdisk /dev/sdx
+512M - EFI
+8G - Swap
+Rest - Linux storage
+
+#Format Partitions
+mkfs.vfat -F 32 /dev/sdx1
+mkswap /dev/sdx2
+mkfs.btrfs -f /dev/sdx3
+
+#Create subvolumes
+mount /dev/sdx3 /mnt
+btrfs subvolume create /mnt/@
+btrfs subvolume create /mnt/@home
+btrfs subvolume create /mnt/@log
+btrfs subvolume create /mnt/@apt
+btrfs subvolume create /mnt/@srv
+btrfs subvolume create /mnt/@docker
+btrfs subvolume create /mnt/@snapshots
+umount /mnt
+
+#Mounting
+mount -o commit=300,space_cache=v2,noatime,compress=zstd:5,subvol=@ /dev/sdx3 /mnt
+mkdir -p /mnt/{boot/efi,home,var/log,var/cache/apt,srv,var/lib/docker,snapshots}
+mount -o commit=300,space_cache=v2,noatime,compress=zstd:5,subvol=@home /dev/sdx3 /mnt/home
+mount -o commit=300,space_cache=v2,noatime,compress=zstd:5,subvol=@snapshots /dev/sdx3 /mnt/snapshots
+mount -o nodatacow,subvol=@log /dev/sdx3 /mnt/var/log
+mount -o nodatacow,subvol=@docker /dev/sdx3 /mnt/var/lib/docker
+mount -o nodatacow,subvol=@apt /dev/sdx3 /mnt/var/cache/apt
+mount -o commit=300,space_cache=v2,noatime,compress=no,subvol=@srv /dev/sdx3 /mnt/srv
+mount /dev/sdx1 /mnt/boot/efi
+swapon /dev/sdx2
+
+#Base system
+debootstrap sid /mnt https://deb.debian.org/debian
+genfstab -U /mnt | tee /mnt/etc/fstab
+arch-chroot /mnt
+
+	apt install linux-image-amd64 locales nano
+
+	nano /etc/locale.gen
+	== uncomment es_MX.UTF-8 UTF-8 ==
+	ln -sf /usr/share/zoneinfo/America/Mexico_City /etc/localtime
+	locale-gen
+
+	echo "rig-debian" > /etc/hostname
+
+	apt install grub-efi-amd64
+	grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=debian
+	update-grub
+
+	apt install network-manager
+	systemctl enable NetworkManager
+
+	apt install git sudo fastfetch
+
+	passwd
+	useradd -m -G sudo -s /bin/bash julio
+	passwd julio
+	
+	exit
+
+#Reboot
+umount -R /mnt
+reboot

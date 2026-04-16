@@ -1,0 +1,4 @@
+patch --dry-run -F3 -i patches/(patch).diff
+
+patch -F3 -i patches/(patch).diff
+sudo make clean install
