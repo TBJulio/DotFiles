@@ -66,9 +66,9 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function 	format          	argument */
-	{ disk_free,	"(/): %s - ",    	"/" },
+	{ disk_free,	" (/): %s - ",    	"/" },
 	{ disk_free,    "(1): %s - ",    	"/mnt/hdd1" },
 	{ disk_free,    "(2): %s - ",    	"/mnt/hdd2" },
 	{ disk_free,    "(3): %s | ",    	"/mnt/hdd3" },
-	{ datetime,	"%s",			"(%a) %d/%m/%y  %I:%M %p " },
+	{ datetime,	"%s",			" (%a) %d/%m/%y  %I:%M %p " },
 };

@@ -7,7 +7,7 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
-static const char *fonts[]          = {"Inconsolata:size=15"};
+static const char *fonts[]          = {"W95FA:size=15"};
 static const char dmenufont[]       = "Inconsolata:size=15";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -21,7 +21,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "󰈹", "", "", "󰕼", "", "", "", "" };
+static const char *tags[] = { "","󰈹","","󰉋","󰕼","","󰓓","󰓇","" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -33,7 +33,8 @@ static const Rule rules[] = {
         { "firefox",                    NULL,                   "Picture-in-Picture",   (unsigned int)-1,       1,              -1 },
         { "firefox",                    NULL,                   NULL,                   1<<1,                   0,              -1 },
         { "code",                       NULL,                   NULL,                   1<<2,                   0,              -1 },
-        { "vlc",                        NULL,                   NULL,                   1<<3,                   0,              -1 },
+	{ "thunar",                     NULL,                   NULL,                   1<<3,                   0,              -1 },
+        { "vlc",                        NULL,                   NULL,                   1<<4,                   0,              -1 },
         { "KeePassXC",                  NULL,                   NULL,                   1<<5,                   0,              -1 },
         { "steam",                      NULL,                   NULL,                   1<<6,                   0,              -1 },
         { "Spotify",                    NULL,                   NULL,                   1<<7,                   0,              -1 },
@@ -77,6 +78,7 @@ static const char *musiccmd[]			= { "spotify", NULL };
 /* click on tag (format: { script, search_string, launch_command, NULL }) */
 static const char *firefoxt[]	= { "sh","-c",SCRIPTS_DIR"check_and_launch.sh firefox firefox", NULL };
 static const char *codet[]	= { "sh","-c",SCRIPTS_DIR"check_and_launch.sh code code", NULL };
+static const char *thunart[]	= { "sh","-c",SCRIPTS_DIR"check_and_launch.sh thunar thunar", NULL };
 static const char *vlct[]	= { "sh","-c",SCRIPTS_DIR"check_and_launch.sh vlc vlc", NULL };
 static const char *keepasst[]	= { "sh","-c",SCRIPTS_DIR"check_and_launch.sh keepassxc keepassxc", NULL };
 static const char *steamt[]	= { "sh","-c",SCRIPTS_DIR"check_and_launch.sh steam steam", NULL };
@@ -90,6 +92,8 @@ void viewandlaunch(const Arg *arg) {
 	else if (arg->ui == 1 << 2)
 		spawn(&(Arg){.v = codet});
 	else if (arg->ui == 1 << 3)
+		spawn(&(Arg){.v = thunart});
+	else if (arg->ui == 1 << 4)
 		spawn(&(Arg){.v = vlct});
 	else if (arg->ui == 1 << 5)
 		spawn(&(Arg){.v = keepasst});
@@ -110,7 +114,7 @@ static const char *nexttrack[]	= { "sh","-c","playerctl next", NULL };
 static const char *prevtrack[]	= { "sh","-c","playerctl previous", NULL };
 
 /* misc */
-static const char *git[] 	= { "sh","-c",SCRIPTS_DIR"git-updater.sh", NULL };
+static const char *git[] 	= { "sh","-c",SCRIPTS_DIR"git-updater.sh > /tmp/git-updater.log 2>&1", NULL };
 static const char *dwmmake [] 	= { "sh","-c",SCRIPTS_DIR"dwm-make.sh", NULL };
 
 static const Key keys[] = {
