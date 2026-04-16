@@ -25,6 +25,7 @@ pulseaudio
 pulseaudio-module-bluetooth
 pulseaudio-utils
 scrot
+ssh-askpass
 thunar
 tree
 ufw

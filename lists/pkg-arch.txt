@@ -39,6 +39,7 @@ unzip
 vlc
 vlc-plugins-all
 wmctrl
+x11-ssh-askpass
 xorg-server
 xorg-xinit
 xorg-xrandr
