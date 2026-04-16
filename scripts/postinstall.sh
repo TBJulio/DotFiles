@@ -103,6 +103,7 @@ case "$OS" in
 	debian)
 		mkdir -p /usr/share/fonts/truetype
 		ln -s $DOTFILES/fonts/LessPerfectDOSVGA.ttf /usr/share/fonts/truetype/LessPerfectDOSVGA.ttf
+		ln -s $DOTFILES/fonts/W95F.otf /usr/share/fonts/truetype/W95F.otf
 		;;
 	*)
 		echo "Invalid option"
