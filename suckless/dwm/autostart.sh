@@ -1,7 +1,6 @@
 #!/bin/sh
 
-dunstify "test" -u normal
+sudo apt update && sudo apt upgrade
+dunstify "apt" "Packages updated" -u normal
 
 alacritty
-#eval "$(ssh-agent -s)"
-#ssh-add ~/.ssh/id_ed25519
