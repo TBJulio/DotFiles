@@ -27,3 +27,6 @@ sudo fail2ban-regex systemd-journal (service).service
 sudo fail2ban-regex path/to/log /etc/fail2ban/filter.d/(rule).conf
 
 sudo fail2ban-client set (rule) ban/unban (<ADDR>)
+
+#chafa for fastfetch
+chafa --symbols=braille --colors none --fg ff0000 -s 50x50 path/to/image
