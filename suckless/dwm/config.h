@@ -95,7 +95,7 @@ static const char *screenshotcmd[]		= { "sh","-c","scrot -e 'mv $f ~/screenshots
 static const char *screenshotselectcmd[]	= { "sh","-c","scrot -s -e 'mv $f ~/screenshots/'", NULL };
 static const char *musiccmd[]			= { "spotify", NULL };
 
-#define SCRIPTS_DIR "/mnt/hdd3/dotfiles/scripts/"
+#define SCRIPTS_DIR "~/.dotfiles/scripts/"
 /* click on tag (format: { script, search_string, launch_command, NULL }) */
 static const char *firefoxt[]	= { "sh","-c",SCRIPTS_DIR"check_and_launch.sh firefox firefox", NULL };
 static const char *codet[]	= { "sh","-c",SCRIPTS_DIR"check_and_launch.sh code code", NULL };
