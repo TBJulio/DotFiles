@@ -12,6 +12,7 @@ firefox-esr
 fonts-font-awesome
 fonts-inconsolata
 fonts-noto
+gpick
 keepassxc
 libnotify-bin
 libx11-dev

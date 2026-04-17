@@ -56,6 +56,7 @@
 #define HEIGHT(X)               ((X)->h + 2 * (X)->bw)
 #define TAGMASK                 ((1 << LENGTH(tags)) - 1)
 #define TEXTW(X)                (drw_fontset_getwidth(drw, (X)) + lrpad)
+#define ColFloat 3
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
@@ -212,6 +213,7 @@ static void tagmon(const Arg *arg);
 static void tile(Monitor *m);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
+static void togglescratch(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
 static void unfocus(Client *c, int setfocus);
@@ -275,6 +277,8 @@ static Window root, wmcheckwin;
 
 /* configuration, allows nested code to access above variables */
 #include "config.h"
+
+static unsigned int scratchtag = 1 << LENGTH(tags);
 
 /* compile-time check if all tags fit into an unsigned int bit array. */
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
@@ -817,7 +821,10 @@ focus(Client *c)
 		detachstack(c);
 		attachstack(c);
 		grabbuttons(c, 1);
-		XSetWindowBorder(dpy, c->win, scheme[SchemeSel][ColBorder].pixel);
+		if (c->isfloating)
+			XSetWindowBorder(dpy, c->win, scheme[SchemeSel][ColFloat].pixel);
+		else
+			XSetWindowBorder(dpy, c->win, scheme[SchemeSel][ColBg].pixel); // invisible border for tiled
 		setfocus(c);
 	} else {
 		XSetInputFocus(dpy, root, RevertToPointerRoot, CurrentTime);
@@ -1077,6 +1084,14 @@ manage(Window w, XWindowAttributes *wa)
 	c->x = MAX(c->x, c->mon->wx);
 	c->y = MAX(c->y, c->mon->wy);
 	c->bw = borderpx;
+
+	selmon->tagset[selmon->seltags] &= ~scratchtag;
+	if (!strcmp(c->name, scratchpadname)) {
+		c->mon->tagset[c->mon->seltags] |= c->tags = scratchtag;
+		c->isfloating = True;
+		c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2);
+		c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2);
+	}
 
 	wc.border_width = c->bw;
 	XConfigureWindow(dpy, w, CWBorderWidth, &wc);
@@ -1688,7 +1703,7 @@ setup(void)
 	/* init appearance */
 	scheme = ecalloc(LENGTH(colors), sizeof(Clr *));
 	for (i = 0; i < LENGTH(colors); i++)
-		scheme[i] = drw_scm_create(drw, colors[i], 3);
+		scheme[i] = drw_scm_create(drw, colors[i], 4);
 	/* init bars */
 	updatebars();
 	updatestatus();
@@ -1753,6 +1768,7 @@ spawn(const Arg *arg)
 
 	if (arg->v == dmenucmd)
 		dmenumon[0] = '0' + selmon->num;
+	selmon->tagset[selmon->seltags] &= ~scratchtag;
 	if (fork() == 0) {
 		if (dpy)
 			close(ConnectionNumber(dpy));
@@ -1838,6 +1854,28 @@ togglefloating(const Arg *arg)
 }
 
 void
+togglescratch(const Arg *arg)
+{
+	Client *c;
+	unsigned int found = 0;
+
+	for (c = selmon->clients; c && !(found = c->tags & scratchtag); c = c->next);
+	if (found) {
+		unsigned int newtagset = selmon->tagset[selmon->seltags] ^ scratchtag;
+		if (newtagset) {
+			selmon->tagset[selmon->seltags] = newtagset;
+			focus(NULL);
+			arrange(selmon);
+		}
+		if (ISVISIBLE(c)) {
+			focus(c);
+			restack(selmon);
+		}
+	} else
+		spawn(arg);
+}
+
+void
 toggletag(const Arg *arg)
 {
 	unsigned int newtags;
@@ -1870,7 +1908,10 @@ unfocus(Client *c, int setfocus)
 	if (!c)
 		return;
 	grabbuttons(c, 0);
-	XSetWindowBorder(dpy, c->win, scheme[SchemeNorm][ColBorder].pixel);
+	if (c->isfloating)
+		XSetWindowBorder(dpy, c->win, scheme[SchemeNorm][ColFloat].pixel);
+	else
+		XSetWindowBorder(dpy, c->win, scheme[SchemeNorm][ColBg].pixel); // invisible border for tiled
 	if (setfocus) {
 		XSetInputFocus(dpy, root, RevertToPointerRoot, CurrentTime);
 		XDeleteProperty(dpy, root, netatom[NetActiveWindow]);

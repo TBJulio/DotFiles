@@ -8,7 +8,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = {"W95FA:size=15"};
-static const char dmenufont[]       = "Inconsolata:size=15";
+static const char dmenufont[]       = "W95FA:size=15";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444"; // dark gray
 static const char col_gray3[]       = "#bbbbbb";
@@ -18,16 +18,19 @@ static const char col_silver[]      = "#C0C0C0";
 static const char col_black[]       = "#000000";
 static const char col_white[]       = "#FFFFFF";
 static const char col_gray[]        = "#808080";
+static const char col_gray5[]       = "#9B9A99";
 static const char col_blue[]        = "#000080";
-static const char *colors[][3]      = {
-        /*               fg         bg         border   */
-        //[SchemeNorm]  = { col_black, col_silver, col_white },
-        //[SchemeSel]   = { col_white, col_blue,  col_white },
-        [SchemeTagsSel]   = { col_white, col_blue,    "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
-        [SchemeTagsNorm]  = { col_black, col_gray,    "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
-        [SchemeInfoSel]   = { col_black, col_silver,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
-        [SchemeInfoNorm]  = { col_gray3, col_gray1,   "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
-	[SchemeStatus]    = { col_black, col_silver,   "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
+static const char col_red[]         = "#8D130D";
+
+static const char *colors[][4]      = {
+			       /* text,      bg,         border,     float */
+	[SchemeNorm]      = { col_black, col_blue,   col_blue,  col_silver }, // window unselected
+	[SchemeSel]       = { col_black, col_blue,   col_blue,  col_blue },   // window selected
+	[SchemeTagsNorm]  = { col_black, col_gray5,  col_black, col_silver }, // tagbar unselected
+	[SchemeTagsSel]   = { col_white, col_blue,   col_black, col_blue },   // tagbar selected
+	[SchemeInfoNorm]  = { col_white, col_gray5,  col_black, col_silver }, // infobar unselected
+	[SchemeInfoSel]   = { col_black, col_silver, col_black, col_blue },   // infobar selected
+	[SchemeStatus]    = { col_black, col_silver, col_black, col_silver }, // sltatus bar
 };
 
 /* tagging */
@@ -78,13 +81,21 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]			= { "dmenu_run", "-b", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[]			= { "dmenu_run", "-b", "-m", dmenumon, "-fn", dmenufont, "-nb", col_silver, "-nf", col_black, "-sb", col_blue, "-sf", col_white, NULL };
 static const char *termcmd[]			= { "alacritty", NULL };
+static const char scratchpadname[] 		= "scratchpad";
+static const char *scratchpadcmd[] = {
+	"alacritty",
+	"--title", scratchpadname,
+	"--option", "window.dimensions.columns=120",
+	"--option", "window.dimensions.lines=34",
+	NULL
+};
 static const char *screenshotcmd[]		= { "sh","-c","scrot -e 'mv $f ~/screenshots/'", NULL };
 static const char *screenshotselectcmd[]	= { "sh","-c","scrot -s -e 'mv $f ~/screenshots/'", NULL };
 static const char *musiccmd[]			= { "spotify", NULL };
 
-#define SCRIPTS_DIR "~/.dotfiles/scripts/"
+#define SCRIPTS_DIR "/mnt/hdd3/dotfiles/scripts/"
 /* click on tag (format: { script, search_string, launch_command, NULL }) */
 static const char *firefoxt[]	= { "sh","-c",SCRIPTS_DIR"check_and_launch.sh firefox firefox", NULL };
 static const char *codet[]	= { "sh","-c",SCRIPTS_DIR"check_and_launch.sh code code", NULL };
@@ -133,6 +144,7 @@ static const Key keys[] = {
 					/* ↑ XK_p */
 	{ MODKEY,             		XK_z, 	   spawn,          	{.v = termcmd } },
 	     /* ↑ |ShiftMask */         /* ↑ XK_Return */
+	{ MODKEY,                       XK_a,  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      	{0} },
 	{ MODKEY,                       XK_j,      focusstack,     	{.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     	{.i = -1 } },
