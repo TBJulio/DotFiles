@@ -1,7 +1,15 @@
 {
 	"$schema":"https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+	"display":{
+		"color":{
+			"keys": "yellow"
+		}
+	},
 	"logo":{
-		"source":"~/.config/fastfetch/tehepero1.txt"
+		"source":"~/.dotfiles/fastfetch/tehepero1.txt",
+		"color": {
+			"1": "38;2;255;0;0" //neon red #FF0000
+		}
 	},
 	"modules":[
 		//"title",
@@ -33,7 +41,7 @@
 		//"battery",
 		//"poweradapter",
 		//"locale",
-		"break"
+		"break",
 		//"colors"
 	]
 }

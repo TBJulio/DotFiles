@@ -1,14 +1,43 @@
 [window]
-opacity=0.9
+opacity = 0.9
+padding = { x = 15, y = 15 }
 
 [font]
-size=15
+size = 15
 
 [font.normal]
 family = "LessPerfectDOSVGA"
-style = "Regular"
+style  = "Regular"
 
-	# Windows 95 Color Scheme
+[colors.primary]
+background = '#151E19'
+foreground = '#26FF94'
+
+[colors.cursor]
+text   = '#000000'
+cursor = '#26FF94'
+
+[colors.normal]
+black   = '#000000'
+red     = '#FF4D4D'
+green   = '#00FF00'
+yellow  = '#FFBC2D'
+blue    = '#1C61C2'
+magenta = '#D50B6F'
+cyan    = '#05FFEE'
+white   = '#C0C0C0'
+
+[colors.bright]
+black   = '#333333'
+red     = '#FF8080'
+green   = '#33FF66'
+yellow  = '#FFE066'
+blue    = '#4D8CFF'
+magenta = '#EB4DA0'
+cyan    = '#66FFFA'
+white   = '#FFFFFF'
+
+# Windows 95 Color Scheme
 
 # Default colors
 #[colors.primary]
@@ -37,35 +66,35 @@ style = "Regular"
 #cyan    = '#54FCFC'
 #white   = '#FFFFFF'
 
-	# Cyber Punk Neon
+# Cyber Punk Neon
 
 # Default colors
-[colors.primary]
-background = '#000b1e'
-foreground = '#0abdc6'
+#[colors.primary]
+#background = '#000b1e'
+#foreground = '#0abdc6'
 
-[colors.cursor]
-text   = '#000b1e'
-cursor = '#0abdc6'
+#[colors.cursor]
+#text   = '#000b1e'
+#cursor = '#0abdc6'
 
 # Normal colors
-[colors.normal]
-black   = '#123e7c'
-red     = '#ff0000'
-green   = '#d300c4'
-yellow  = '#f57800'
-blue    = '#123e7c'
-magenta = '#711c91'
-cyan    = '#0abdc6'
-white   = '#d7d7d5'
+#[colors.normal]
+#black   = '#123e7c'
+#red     = '#ff0000'
+#green   = '#d300c4'
+#yellow  = '#f57800'
+#blue    = '#123e7c'
+#magenta = '#711c91'
+#cyan    = '#0abdc6'
+#white   = '#d7d7d5'
 
 # Bright colors
-[colors.bright]
-black   = '#1c61c2'
-red     = '#ff0000'
-green   = '#d300c4'
-yellow  = '#f57800'
-blue    = '#00ff00'
-magenta = '#711c91'
-cyan    = '#0abdc6'
-white   = '#d7d7d5'
+#[colors.bright]
+#black   = '#1c61c2'
+#red     = '#ff0000'
+#green   = '#d300c4'
+#yellow  = '#f57800'
+#blue    = '#00ff00'
+#magenta = '#711c91'
+#cyan    = '#0abdc6'
+#white   = '#d7d7d5'

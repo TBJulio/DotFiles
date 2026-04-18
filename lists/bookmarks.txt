@@ -21,9 +21,3 @@ https://torrent.unionfansub.com/userdetails.php?id=187612
 
 Metal Tracker
 https://en.metal-tracker.com/profile/927541805.html
-
-P2Pool
-https://p2pool.io/#help
-
-Mini P2Pool Observer
-https://mini.p2pool.observer/
