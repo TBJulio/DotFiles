@@ -19,13 +19,14 @@ static const char col_black[]       = "#000000";
 static const char col_white[]       = "#FFFFFF";
 static const char col_gray[]        = "#808080";
 static const char col_gray5[]       = "#9B9A99";
-static const char col_blue[]        = "#000080";
+static const char col_blue[]        = "#000080"; // royal
+static const char col_blue2[]       = "#0000C0"; // true blue
 static const char col_red[]         = "#8D130D";
 
 static const char *colors[][4]      = {
 			       /* text,      bg,         border,     float */
 	[SchemeNorm]      = { col_black, col_blue,   col_blue,  col_silver }, // window unselected
-	[SchemeSel]       = { col_black, col_blue,   col_blue,  col_blue },   // window selected
+	[SchemeSel]       = { col_black, col_blue,   col_blue,  col_blue2 },  // window selected
 	[SchemeTagsNorm]  = { col_black, col_gray5,  col_black, col_silver }, // tagbar unselected
 	[SchemeTagsSel]   = { col_white, col_blue,   col_black, col_blue },   // tagbar selected
 	[SchemeInfoNorm]  = { col_white, col_gray5,  col_black, col_silver }, // infobar unselected
