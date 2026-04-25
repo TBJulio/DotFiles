@@ -30,3 +30,18 @@ sudo fail2ban-client set (rule) ban/unban (<ADDR>)
 
 #chafa for fastfetch
 chafa --symbols=braille --colors none --fg ff0000 -s 50x50 path/to/image
+
+#solution when i right click and it sends me to the previous page, in firefox
+about:config (in firefox)
+ui.context_menus.after_mouseup
+set as "true"
+
+#enable userChrome.css in firefox
+about:config (in firefox)
+toolkit.legacyUserProfileCustomizations.stylesheets
+set as "true"
+
+about:support
+"Profile Directory" > "Open Directory"
+mkdir ~/.mozilla/firefox/(profile)/chrome
+touch userChrome.css
