@@ -1,0 +1,15 @@
+#/etc/systemd/system/powertop-wol.service
+
+[Unit]
+Description=PowerTOP Auto-Tune with Wake-on-LAN Exception
+After=network.target TLP.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/sbin/powertop --auto-tune
+ExecStart=/bin/sh -c 'echo "on" > /sys/bus/pci/devices/0000:(PCIe address, with lspci)/power/control'
+ExecStart=/usr/sbin/ethtool -s (interface) wol g
+
+[Install]
+WantedBy=multi-user.target
